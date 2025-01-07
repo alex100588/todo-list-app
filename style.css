@@ -1,0 +1,105 @@
+body {
+  background: url("img/empire-state-building-6675010_1920.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+}
+
+.content {
+  border-radius: 2rem;
+  opacity: 0.8;
+  margin-top: 5rem;
+  text-align: center;
+  background-color: white;
+  width: 40%;
+  height: 80%;
+  overflow: hidden;
+}
+
+.to-do-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.h1 {
+  padding-right: 1rem;
+  font-weight: bolder;
+  color: rgb(36, 9, 108);
+}
+
+.fa-pen {
+  color: rgb(36, 9, 108);
+  font-size: 1.2rem;
+}
+
+.input-text {
+  background-color: rgb(138, 200, 200);
+  border: 0;
+  opacity: 0.6;
+  border-radius: 1rem;
+  width: 55%;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+}
+
+.input-text::placeholder {
+  color: white;
+  z-index: 4;
+  font-size: 1rem;
+}
+
+.input-text:focus {
+  outline: none;
+  color: rgb(36, 9, 108);
+  font-weight: 400;
+}
+
+.plus-icon {
+  margin-left: -2.5rem;
+  cursor: pointer;
+  color: rgb(36, 9, 108);
+  opacity: 9;
+  font-weight: 900;
+  border: 2px solid rgb(36, 9, 108);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.paragraf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.position {
+  margin-top: 1rem;
+  position: relative;
+  width: 80%;
+  background-color: rgb(36, 9, 108);
+  border-radius: 1rem;
+  font-weight: 800;
+}
+.paragraf-style {
+  overflow: hidden;
+  max-height: 1rem;
+  color: white;
+  font-weight: 700;
+}
+.icon2 {
+  position: absolute;
+  right: 22px;
+  top: 15px;
+  color: white;
+}
