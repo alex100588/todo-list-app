@@ -1,51 +1,92 @@
 const input = document.querySelector(".input-text");
 const addIcon = document.querySelector(".plus-icon");
-// const deleteIcon = document.querySelector(".icon2");
-const todoItem = document.querySelector(".position");
 const paragraphContainer = document.querySelector(".paragraf-container");
+const checkeItem = document.querySelector(".check-item");
+const content = document.querySelector(".to-do-text");
+const position = document.querySelector(".position");
 
+// Am incarcat container-ul cu ce avem deja salvat in local-storage sub key-ul 'data'
+window.addEventListener("load", () => {
+  const storedTodoItemsText = localStorage.getItem("data");
+  if (storedTodoItemsText) {
+    paragraphContainer.innerHTML = storedTodoItemsText;
+  }
+  attachDeleteListeners();
+});
 
-
+// Actiunea de adaugare a unui 'todo item' pe event 'click'
 addIcon.addEventListener("click", () => {
-  element();
+  if (!input.value.trim()) return; // Verificare ca input sa nu fie gol
+  addTodoItem(input.value);
   input.value = "";
 });
+
+// Actiunea de adaugare a unui 'todo item' pe event 'keypress'
 input.addEventListener("keypress", (e) => {
-  if (e.key == "Enter") {
-    element();
+  if (e.key === "Enter" && input.value.trim()) {
+    addTodoItem(input.value);
     input.value = "";
   }
 });
 
+// Actiunea pentru a adauga un todo item pe ecran si in local storage
+const addTodoItem = (text) => {
+  const div = document.createElement("div");
+  const paragraph = document.createElement("p");
+  const icon = document.createElement("i");
+  const checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
 
-const element = () => {
-    const div = document.createElement("div");
-    const paragraph = document.createElement("p");
-    const icon = document.createElement("i");
-    paragraph.textContent = input.value;
-    paragraph.classList.add("paragraf-style");
-    icon.classList.add("fas", "fa-trash", "icon", "icon2");
-    div.classList.add("position");
+  paragraph.textContent = text;
+  paragraph.classList.add("paragraf-style");
+  icon.classList.add("fas", "fa-trash", "icon", "icon2");
+  div.classList.add("position");
+  checkbox.classList.add("check-item");
 
-    div.appendChild(paragraph, icon);
-    div.appendChild(icon);
-    const all = paragraphContainer.appendChild(div);
-    localStorage.setItem('Item', JSON.stringify(all))
-    console.log(localStorage);
-    
+  div.appendChild(paragraph);
+  div.appendChild(icon);
+  div.appendChild(checkbox);
+  paragraphContainer.appendChild(div);
+
+  // Salvarea in local storage
+  updateTodosToLocalStorage();
+  // Adaugarea evenimentului de stergere
+  attachDeleteListener(icon);
+
+  atachChecked(checkbox);
 };
-const test = document.querySelectorAll(".icon2").forEach(i =>{
-    // console.log(i);
-    
-    i.addEventListener('click', (e)=>{
-        e.target.parentElement.remove()
-        console.log(e.target);
-        if(e.target === i){
-            console.log(i);
-            
-        }
-       
-    })
-    
-})
 
+// Am adaugat click event pe toate 'icons' deja existente
+const attachDeleteListeners = () => {
+  const icons = document.querySelectorAll(".icon2");
+  const allChecboxes = document.querySelectorAll(".check-item");
+  icons.forEach((icon) => {
+    attachDeleteListener(icon);
+  });
+
+  allChecboxes.forEach((checkbox) => {
+    atachChecked(checkbox);
+  });
+};
+
+// Click event individual pentru icon - stergere si update la local storage
+const attachDeleteListener = (icon) => {
+  icon.addEventListener("click", (e) => {
+    e.target.parentElement.remove();
+    updateTodosToLocalStorage();
+  });
+};
+
+// Checkbox after its checked
+const atachChecked = (checkbox) => {
+  checkbox.addEventListener("click", (e) => {
+    console.log("checked", e);
+    position.classList.add("checked");
+    console.log("after");
+  });
+};
+
+// Salvam tot innerHTML din paragraphContainer in localstorage
+const updateTodosToLocalStorage = () => {
+  localStorage.setItem("data", paragraphContainer.innerHTML);
+};

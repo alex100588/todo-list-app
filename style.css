@@ -3,6 +3,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  background-position: fixed
+  ;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -18,7 +20,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
+  min-height: 100vh;
 }
 
 .content {
@@ -58,6 +60,7 @@ body {
   cursor: pointer;
 }
 
+
 .input-text::placeholder {
   color: white;
   z-index: 4;
@@ -84,6 +87,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2.8rem;
 }
 
 .position {
@@ -104,6 +108,18 @@ body {
   position: absolute;
   right: 22px;
   top: 15px;
+  color: white;
+}
+
+.check-item{
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  color: white;
+}
+.checked{
+  background-color: #000000;
+  text-decoration: line-through;
   color: white;
 }
 
