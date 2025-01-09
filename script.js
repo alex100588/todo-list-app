@@ -52,8 +52,8 @@ const addTodoItem = (text) => {
   updateTodosToLocalStorage();
   // Adaugarea evenimentului de stergere
   attachDeleteListener(icon);
-
   atachChecked(checkbox);
+
 };
 
 // Am adaugat click event pe toate 'icons' deja existente
@@ -80,7 +80,10 @@ const attachDeleteListener = (icon) => {
 // Checkbox after its checked
 const atachChecked = (checkbox) => {
   checkbox.addEventListener("click", (e) => {
-    console.log("checked", e);
+   
+    console.log("checked", e.target);
+    console.log(position);
+    
     position.classList.add("checked");
     console.log("after");
   });

@@ -15,12 +15,24 @@ body {
   cursor: pointer;
 }
 
+
 .container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  position: relative;
+}
+.container::before{
+  content: '';
+  background-color: rgb(121, 121, 201);
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
 }
 
 .content {
