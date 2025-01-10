@@ -1,9 +1,6 @@
 const input = document.querySelector(".input-text");
 const addIcon = document.querySelector(".plus-icon");
 const paragraphContainer = document.querySelector(".paragraf-container");
-const checkeItem = document.querySelector(".check-item");
-const content = document.querySelector(".to-do-text");
-const position = document.querySelector(".position");
 
 // Am incarcat container-ul cu ce avem deja salvat in local-storage sub key-ul 'data'
 window.addEventListener("load", () => {
@@ -11,7 +8,7 @@ window.addEventListener("load", () => {
   if (storedTodoItemsText) {
     paragraphContainer.innerHTML = storedTodoItemsText;
   }
-  attachDeleteListeners();
+  attachAllListeners();
 });
 
 // Actiunea de adaugare a unui 'todo item' pe event 'click'
@@ -52,20 +49,20 @@ const addTodoItem = (text) => {
   updateTodosToLocalStorage();
   // Adaugarea evenimentului de stergere
   attachDeleteListener(icon);
-  atachChecked(checkbox);
-
+  attachChecked(checkbox, div);
 };
 
 // Am adaugat click event pe toate 'icons' deja existente
-const attachDeleteListeners = () => {
+const attachAllListeners = () => {
   const icons = document.querySelectorAll(".icon2");
-  const allChecboxes = document.querySelectorAll(".check-item");
+  const allCheckboxes = document.querySelectorAll(".check-item");
+
   icons.forEach((icon) => {
     attachDeleteListener(icon);
   });
 
-  allChecboxes.forEach((checkbox) => {
-    atachChecked(checkbox);
+  allCheckboxes.forEach((checkbox) => {
+    attachChecked(checkbox);
   });
 };
 
@@ -78,14 +75,14 @@ const attachDeleteListener = (icon) => {
 };
 
 // Checkbox after its checked
-const atachChecked = (checkbox) => {
+const attachChecked = (checkbox) => {
   checkbox.addEventListener("click", (e) => {
-   
-    console.log("checked", e.target);
-    console.log(position);
-    
-    position.classList.add("checked");
-    console.log("after");
+    const parentDiv = e.target.parentElement;
+    console.log(parentDiv);
+
+    // Am facut toggle la clasa de 'checked' pe elementul parinte
+    parentDiv.classList.toggle("checked");
+    updateTodosToLocalStorage();
   });
 };
 

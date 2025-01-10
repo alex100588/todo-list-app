@@ -1,10 +1,9 @@
 body {
-  background: url("img/empire-state-building-6675010_1920.jpg");
+  background: url("img/fruit-basket-8410566_1280.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-position: fixed
-  ;
+  background-position: fixed;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,7 +14,6 @@ body {
   cursor: pointer;
 }
 
-
 .container {
   display: flex;
   justify-content: center;
@@ -24,20 +22,20 @@ body {
   min-height: 100vh;
   position: relative;
 }
-.container::before{
-  content: '';
-  background-color: rgb(121, 121, 201);
+.container::before {
+  content: "";
+  background-color: rgb(66, 66, 163);
   position: absolute;
   left: 0;
   right: 0;
   width: 100vw;
-  height: 100vh;
-  opacity: 0.5;
+  height: 100%;
+  opacity: 0.4;
 }
 
 .content {
   border-radius: 2rem;
-  opacity: 0.8;
+  opacity: 0.7;
   margin-top: 5rem;
   text-align: center;
   background-color: white;
@@ -71,7 +69,6 @@ body {
   padding: 0.6rem 1.2rem;
   cursor: pointer;
 }
-
 
 .input-text::placeholder {
   color: white;
@@ -123,28 +120,57 @@ body {
   color: white;
 }
 
-.check-item{
+.check-item {
   position: absolute;
   left: 12px;
   top: 14px;
   color: white;
 }
-.checked{
+.checked {
   background-color: #000000;
   text-decoration: line-through;
-  color: white;
+  color: #000000;
 }
 
 @media screen and (max-width: 1024px) {
   .content {
     width: 80%;
+    margin-top: 0;
   }
 }
 @media screen and (max-width: 600px) {
   .container {
-    height: 100vh;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    min-height: 100vh;
   }
   .content {
     margin-top: 0;
+    min-height: 100vh;
+    width: 90%;
+  }
+  .container::before {
+    content: "";
+
+    height: 103%;
+  }
+
+  .position {
+    margin-top: 0.3rem;
+  }
+
+  .paragraf-style {
+    font-size: 0.8rem;
+  }
+
+  .icon2 {
+    right: 9px;
+    top: 12px;
+    font-size: 0.8rem;
+  }
+
+  .check-item {
+    left: 5px;
+    top: 10px;
   }
 }
